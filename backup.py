@@ -20,15 +20,16 @@ config_folder= 'c:\\backup_config'
 config_file ='data.json'
 if not (os.path.isdir(config_folder)) :
 	os.mkdir (config_folder)
-	print ("Make pro file directory")
-if (os.path.isfile(config_folder + config_file)) :
+	print ("Make config directory")
+if (os.path.isfile(config_folder+ "\\" + config_file)) :
 	f = open(config_folder+ "\\" + config_file)
 else :
 	f = open(config_folder+ '\\'+ config_file, "w")
-	txt='{ "db_info" : {"path_to_xampp" : "c:\\\\xampp\\\\mysql\\\\bin\\\\","backup_path" : "d:\\\\db\\\\","db_name" : "masar","db_user": "root","db_pass":""}}'
+	txt='{ "db_info" :\n \t {\n \t\t"path_to_xampp" : "c:\\\\xampp\\\\mysql\\\\bin\\\\",\n\t\t"backup_path" : "d:\\\\db\\\\",\n\t\t"db_name" : "masar",\n\t\t"db_user": "root","db_pass":""\n\t}\n}'
 	f.write (txt)
 	f.close()
 	f = open(config_folder+ "\\" + config_file)
+	print ("Make data.json file")
  
 # returns JSON object as
 # a dictionary
