@@ -3,7 +3,6 @@ import datetime
 import subprocess
 import json
 import time
-
 def make_backup(path_to_xampp,db_name,backup_path):
     if not (os.path.isdir(backup_path)) :
         os.mkdir(backup_path) # if the directory is not exsist create it
@@ -17,14 +16,19 @@ def make_backup(path_to_xampp,db_name,backup_path):
 
 
 # Opening JSON file
-if (os.path.isfile('data.json')) :
-    f = open('data.json')
+config_folder= 'c:\\backup_config'
+config_file ='data.json'
+if not (os.path.isdir(config_folder)) :
+	os.mkdir (config_folder)
+	print ("Make pro file directory")
+if (os.path.isfile(config_folder + config_file)) :
+	f = open(config_folder+ "\\" + config_file)
 else :
-    f = open('data.json', "w")
-    txt='{ "db_info" : {"path_to_xampp" : "c:\\\\xampp\\\\mysql\\\\bin\\\\","backup_path" : "d:\\\\db\\\\","db_name" : "masar","db_user": "root","db_pass":""}}'
-    f.write (txt)
-    f.close()
-	
+	f = open(config_folder+ '\\'+ config_file, "w")
+	txt='{ "db_info" : {"path_to_xampp" : "c:\\\\xampp\\\\mysql\\\\bin\\\\","backup_path" : "d:\\\\db\\\\","db_name" : "masar","db_user": "root","db_pass":""}}'
+	f.write (txt)
+	f.close()
+	f = open(config_folder+ "\\" + config_file)
  
 # returns JSON object as
 # a dictionary
