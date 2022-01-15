@@ -1,8 +1,0 @@
-{ "db_info" : {
-	"path_to_xampp" : "c:\\xampp\\mysql\\bin\\",
-	"backup_path" : "d:\\db\\",
-	"db_name" : "masar",
-	"db_user": "root",
-	"db_pass":""
-	}
-	}
