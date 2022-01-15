@@ -5,6 +5,8 @@ import json
 
 
 def make_backup(path_to_xampp,db_name,backup_path):
+    if not (os.path.isdir(backup_path)) :
+        os.mkdir(backup_path) # if the directory is not exsist create it
     x=datetime.datetime.now()
     x=x.strftime("%Y%m%H%M%S")
     output_file_name=x
