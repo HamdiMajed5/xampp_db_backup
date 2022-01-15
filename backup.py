@@ -2,7 +2,7 @@ import os
 import datetime
 import subprocess
 import json
-
+import time
 
 def make_backup(path_to_xampp,db_name,backup_path):
     if not (os.path.isdir(backup_path)) :
@@ -17,7 +17,14 @@ def make_backup(path_to_xampp,db_name,backup_path):
 
 
 # Opening JSON file
-f = open('data.json')
+if (os.path.isfile('data.json')) :
+    f = open('data.json')
+else :
+    f = open('data.json', "w")
+    txt='{ "db_info" : {"path_to_xampp" : "c:\\\\xampp\\\\mysql\\\\bin\\\\","backup_path" : "d:\\\\db\\\\","db_name" : "masar","db_user": "root","db_pass":""}}'
+    f.write (txt)
+    f.close()
+	
  
 # returns JSON object as
 # a dictionary
@@ -41,3 +48,4 @@ else :
     f.close()
     make_backup(path_to_xampp,db_name,backup_path)
      
+time.sleep(5) 
